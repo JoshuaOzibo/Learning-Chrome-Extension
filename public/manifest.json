@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Bookmark Manager",
+  "version": "1.0",
+  "description": "Save and manage your bookmarks easily.",
+  "permissions": ["activeTab", "tabs", "scripting"],
+  "background": {
+    "service_worker": "background.ts"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "diamond.png"
+    }
+  },
+  "host_permission": [
+    "http://*/*",
+    "https://*/*"
+  ]
+}
