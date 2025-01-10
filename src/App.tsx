@@ -1,34 +1,34 @@
-import ChangeBackgroundColourTask from "./components/InputToChangeColour";
+import InputToChangeColor from "./components/InputToChangeColor";
 import { useState } from "react";
 export default function App() {
-  const [colour, setColour] = useState<string>("");
+  const [color, setColor] = useState<string>("");
 
   const getCurrentTab = async () => {
     let [tab] = await chrome.tabs.query({ active: true });
     console.log(tab);
     chrome.scripting.executeScript<string[], void>({
       target: { tabId: tab.id! },
-      args: [colour],
-      func: (colour) => {
-        document.body.style.backgroundColor = colour;
+      args: [color],
+      func: (color) => {
+        document.body.style.backgroundColor = color;
       },
     });
   };
 
   return (
     <div className="w-80 h-96 p-5 border-2 rounded-md">
-      <ChangeBackgroundColourTask
-        handleColourChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setColour(e.target.value)
+      <InputToChangeColor
+        handleColorChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setColor(e.target.value)
         }
-        colour={colour}
+        color={color}
       />
       <div className=" w-full flex my-5 justify-center">
         <button
           className="px-5 border bg-black font-medium text-white rounded-md py-3"
           onClick={getCurrentTab}
         >
-          Accept Colour
+          Accept Color
         </button>
       </div>
     </div>
