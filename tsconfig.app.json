@@ -22,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "public/content.ts", "public/background.ts"]
+  "include": ["src", "src/contactScraper/content.ts", "public/background.ts"]
 }
