@@ -1,10 +1,8 @@
 import InputToChangeColor from "./components/InputToChangeColor";
-import {getCurrentTab} from './components/backgroundColorFunction';
+import { getCurrentTab } from "./components/backgroundColorFunction";
 import { useState } from "react";
 export default function App() {
   const [color, setColor] = useState<string>("");
-
-
 
   return (
     <div className="w-80 h-96 p-5 border-2 rounded-md">
@@ -17,7 +15,7 @@ export default function App() {
       <div className=" w-full flex my-5 justify-center">
         <button
           className="px-5 border bg-black font-medium text-white rounded-md py-3"
-          onClick={() => getCurrentTab({color}) }
+          onClick={() => getCurrentTab({ color })}
         >
           Accept Color
         </button>
