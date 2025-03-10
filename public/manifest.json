@@ -4,9 +4,6 @@
   "version": "1.0",
   "description": "Save and manage your bookmarks easily.",
   "permissions": ["activeTab", "tabs", "scripting"],
-  "background": {
-    "service_worker": "background.ts"
-  },
   "action": {
     "default_popup": "index.html",
     "default_icon": {

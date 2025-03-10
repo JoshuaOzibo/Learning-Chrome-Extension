@@ -1,31 +1,77 @@
+import React from 'react';
+
+interface TextStyleProps {
+  styles: {
+    element: string;
+    fontFamily: string;
+    fontSize: string;
+    color: string;
+    letterSpacing: string;
+    fontWeight: string;
+    lineHeight: string;
+    text: string;
+  }[];
+}
+
+const TextStyle: React.FC<TextStyleProps> = ({ styles }) => {
+  return (
+    <div className="text-style-container">
+      {styles.map((style, index) => (
+        <div key={index} className="style-card">
+          <div className="style-header">
+            <span className="element-tag">{style.element}</span>
+            <span className="element-text">{style.text.substring(0, 50)}...</span>
+          </div>
+          <div className="style-details">
+            <div className="style-row">
+              <span className="style-label">Font Family:</span>
+              <span className="style-value">{style.fontFamily}</span>
+            </div>
+            <div className="style-row">
+              <span className="style-label">Font Size:</span>
+              <span className="style-value">{style.fontSize}</span>
+            </div>
+            <div className="style-row">
+              <span className="style-label">Color:</span>
+              <span className="style-value">{style.color}</span>
+            </div>
+            <div className="style-row">
+              <span className="style-label">Letter Spacing:</span>
+              <span className="style-value">{style.letterSpacing}</span>
+            </div>
+            <div className="style-row">
+              <span className="style-label">Font Weight:</span>
+              <span className="style-value">{style.fontWeight}</span>
+            </div>
+            <div className="style-row">
+              <span className="style-label">Line Height:</span>
+              <span className="style-value">{style.lineHeight}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default TextStyle;
 
 
-document.getElementById("scrape").addEventListener("click", () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, { action: "scrapeStyles" }, (response) => {
-        const resultsDiv = document.getElementById("results");
-        if (!response || response.length === 0) {
-          resultsDiv.innerHTML = "<p>No text styles found on this page.</p>";
-          return;
-        }
-  
-        // Display the scraped styles
-        resultsDiv.innerHTML = response
-          .map(
-            (style) => `
-              <div>
-                <h3>${style.text}</h3>
-                <p>Font Family: ${style.fontFamily}</p>
-                <p>Font Size: ${style.fontSize}</p>
-                <p>Color: ${style.color}</p>
-                <p>Letter Spacing: ${style.letterSpacing}</p>
-                <p>Font Weight: ${style.fontWeight}</p>
-                <p>Line Height: ${style.lineHeight}</p>
-              </div>
-            `
-          )
-          .join("");
-      });
-    });
-  });
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
